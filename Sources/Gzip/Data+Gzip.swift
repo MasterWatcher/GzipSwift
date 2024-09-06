@@ -34,8 +34,8 @@ import struct Foundation.Data
     import zlib
 #endif
 
-public enum Gzip {
-    
+public enum Constants {
+
     /// Maximum value for windowBits (`MAX_WBITS`)
     public static let maxWindowBits = MAX_WBITS
 }
@@ -170,8 +170,8 @@ extension Data {
     /// - Parameter wBits: Manage the size of the history buffer.
     /// - Returns: Gzip-compressed `Data` instance.
     /// - Throws: `GzipError`
-    public func gzipped(level: CompressionLevel = .defaultCompression, wBits: Int32 = Gzip.maxWindowBits + 16) throws(GzipError) -> Data {
-        
+    public func gzipped(level: CompressionLevel = .defaultCompression, wBits: Int32 = Constants.maxWindowBits + 16) throws(GzipError) -> Data {
+
         guard !self.isEmpty else {
             return Data()
         }
@@ -241,8 +241,8 @@ extension Data {
     /// - Parameter wBits: Manage the size of the history buffer.
     /// - Returns: Gzip-decompressed `Data` instance.
     /// - Throws: `GzipError`
-    public func gunzipped(wBits: Int32 = Gzip.maxWindowBits + 32) throws(GzipError) -> Data {
-        
+    public func gunzipped(wBits: Int32 = Constants.maxWindowBits + 32) throws(GzipError) -> Data {
+
         guard !self.isEmpty else {
             return Data()
         }
